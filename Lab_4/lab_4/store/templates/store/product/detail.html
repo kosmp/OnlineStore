@@ -1,0 +1,50 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block title %}
+{{ product.name }}
+{% endblock %}
+{% block content %}
+<div class="product-detail">
+    <style>
+        .bottom-right {
+          position: fixed;
+          bottom: 0;
+          right: 0;
+          padding: 10px;
+          background-color: #f1f1f1;
+          border: 1px solid #ccc;
+        }
+    </style>
+
+    <img src="{% if product.image %}{{ product.image.url }}{% else %}
+    {% static "img/no_image.png" %}{% endif %}">
+    <h1>{{ product.name }}</h1>
+    <h2>
+        <a href="{{ product.type.get_absolute_url }}">{{product.ProductType }}</a>
+    </h2>
+    <p class="price">Price: {{ product.cost }}</p>
+    <p>Id: {{ product.id }}</p>
+    <p>Type: {{ product.type.name }}</p>
+    <p>Model: {{ product.model.name }}</p>
+    {% if user.is_authenticated %}
+    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input type="submit" value="In cart">
+    </form>
+    {% endif %}
+    {{ product.description|linebreaks }}
+    {% if product.produced %}
+        <p>Produced</p>
+    {% else %}
+        <p>Out of production</p>
+    {% endif %}
+    {% if user.is_staff %}
+    <td><a href="edit/{{ product.id }}/">Edit</a> | <a href="delete/{{ product.id }}/">Remove</a></td>
+    {% endif %}
+    <br>
+    <div class="bottom-right">
+        <p>Joke for you: {{ joke }}</p>
+    </div>
+</div>
+{% endblock %}

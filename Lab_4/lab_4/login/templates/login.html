@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <style>
+            .bottom-right {
+              position: fixed;
+              bottom: 0;
+              right: 0;
+              padding: 10px;
+              background-color: #f1f1f1;
+              border: 1px solid #ccc;
+            }
+        </style>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Sign in</button>
+            
+        </form>
+    </body>
+    <tail>
+        <div class="bottom-right">
+            <p>Quote for you: {{ quote }}</p>
+        </div>
+    </tail>
+</html>

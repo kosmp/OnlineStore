@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+      Product table
+      <style>
+          table {
+            border-collapse: collapse;
+          }
+        
+          table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+          }
+        </style>
+      <table>
+          <thead>
+            <tr>
+              <th>Place</th>
+              <th>Name</th>
+              <th>Purchase count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in product_table %}
+              <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td><a href="/statistic/tables/{{ product.id }}">{{ product.name }}</a></td>
+                  <td>{{ product.purchase_count }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <br>
+        <p>Greatest demand: {{greatest_demand.name}} : {{greatest_demand.purchase_count}} sales</p>
+        <p>Least demand: {{least_demand}} : {{least_demand.purchase_count}} sales</p>
+        <br>
+        Pivot Table
+        <style>
+          table {
+            border-collapse: collapse;
+          }
+        
+          table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+          }
+        </style>
+        <table>
+          <tbody>
+            {% for arr in pivot_table %}
+            <tr>
+              {%for cell in arr%}
+                
+                  <td>{{ cell }}</td>
+                
+              {%endfor%}
+          </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <br>
+
+        Profit Table
+        <style>
+          table {
+            border-collapse: collapse;
+          }
+        
+          table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+          }
+        </style>
+        <table>
+          <tbody>
+            {% for arr in profit_table %}
+            <tr>
+              {%for cell in arr%}
+                
+                  <td>{{ cell }}</td>
+                
+              {%endfor%}
+          </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <br>
+        Sales table per month
+        <style>
+          table {
+            border-collapse: collapse;
+          }
+        
+          table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+          }
+        </style>
+        <table>
+          <tbody>
+            {% for arr in sales_per_month_table %}
+            <tr>
+              {%for cell in arr%}
+                
+                  <td>{{ cell }}</td>
+                
+              {%endfor%}
+          </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <br>
+
+        Profit table per year
+        <style>
+          table {
+            border-collapse: collapse;
+          }
+        
+          table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+          }
+        </style>
+        <table>
+          <tbody>
+            {% for arr in profit_per_year_table %}
+            <tr>
+              {%for cell in arr%}
+                
+                  <td>{{ cell }}</td>
+                
+              {%endfor%}
+          </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <br>
+        <form action="/statistic/" method="get">
+          <button type="submit">Back</button>
+        </form>
+    </body>
+</html>

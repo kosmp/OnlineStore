@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}Shop{% endblock %}</title>
+        <link href="{% static "css/base.css" %}" rel="stylesheet">
+    </head>
+    <body>
+        <div id="header">
+            <a href="/" class="logo">Shop</a>
+            {% if user.is_superuser %}
+            <a href="/statistic/">Statistic</a>
+            {% endif %}
+        </div>
+        <div id="subheader">
+                Current Date: <span id='date'></span>
+                 | Current time: <span id='time'></span>
+                 | Current time zone: <span id='zone'></span>
+            <script>
+                const today = new Date();
+                const yyyy = today.getFullYear();
+                let mm = today.getMonth() + 1; // Months start at 0!
+                let dd = today.getDate();
+                let h = today.getHours();
+                if (h<10)
+                    h = '0' + h;
+                let min = today.getMinutes();
+                if (min < 10)
+                    min = '0' + min;
+                let sec = today.getSeconds();
+                if (sec < 10)
+                    sec = '0' + sec;
+
+                if (dd < 10) dd = '0' + dd;
+                if (mm < 10) mm = '0' + mm;
+
+                let formattedToday = dd + '/' + mm + '/' + yyyy;
+                let time = h+":"+min+":"+sec; 
+                let tz = -(new Date().getTimezoneOffset() / 60);
+                if(tz>0){
+                    tz = "+" + tz;
+                }
+                tz = "UTC" + tz;
+                document.getElementById('date').innerHTML=formattedToday;
+                document.getElementById('time').innerHTML=time;
+                document.getElementById('zone').innerHTML=tz;
+            </script>
+            <div class="cart">
+                {% if user.is_authenticated %}
+                {% with total_items=cart|length %}
+                {% if cart|length > 0 %}
+                In cart:
+                <a href="{% url 'cart:cart_detail' %}">
+                    {{ total_items }} pcs, {{ cart.get_total_price }} 
+                </a>
+                {% else %}
+                Cart empty
+                {% endif %}
+                {% endwith %}
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                | {{ user.username }} |
+                <a href="{% url 'login:logout' %}">Out</a>
+                {% else %}
+                <a href="{% url 'login:login' %}">Sign in</a>
+                <a href="{% url 'login:register' %}">Sign up</a>
+                {% endif %}
+            </div>
+        </div>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
