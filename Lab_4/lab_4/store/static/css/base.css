@@ -116,33 +116,36 @@ ul.errorlist {
 }
 
 
-#header {
-    padding:10px 100px;
-    font-size:18px;
+header {
+    padding: 10px 100px;
+    background-color: #ececec;
+    font-size: 15px;
     overflow:auto;
+    display: flex;
 }
 
-#subheader {
+header #date_container {
     background:#ececec;
-    color:#444;
-    padding:15px 100px;
-    overflow:auto;
+    color:#000000;
+    margin: 10px;
 }
 
-#header .logo {
+#link_buttons {
     font-family: 'Ubuntu', sans-serif;
-    float:left;
-    color:#333;
-    font-size:22px;
-    margin-right:10%;
 }
 
-#subheader .cart {
-    float:right;
-    padding-top:4px;
+header #link_buttons .logo {
+    display: inline-block;
+    color: #5b80b2;
+    font-size:15px;
+    margin: 10px 30px 10px 0px;
 }
 
-#content {
+header .cart {
+    margin: 10px;
+}
+
+main #content {
     padding:0 100px;
     overflow:hidden;
 }

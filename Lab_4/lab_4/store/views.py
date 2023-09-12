@@ -7,6 +7,39 @@ from .forms import ProductForm
 from django.core.exceptions import PermissionDenied
 import requests
 
+
+def main_page(request):
+    return render(request, 'store/info/mainPage.html')
+
+
+def about_page(request):
+    return render(request, 'store/info/about.html')
+
+
+def news_page(request):
+    return render(request, 'store/info/news.html')
+
+
+def glossary_page(request):
+    return render(request, 'store/info/glossaryOfTermsAndConcepts.html')
+
+
+def contacts_page(request):
+    return render(request, 'store/info/contacts.html')
+
+
+def privacy_policy_page(request):
+    return render(request, 'store/info/privacyPolicy.html')
+
+
+def reviews_page(request):
+    return render(request, 'store/info/reviews.html')
+
+
+def promo_codes_page(request):
+    return render(request, 'store/info/promoCodesAndCoupons.html')
+
+
 def product_list(request, product_type_name = None):
     product_type = None
     types = ProductType.objects.all()
@@ -57,7 +90,7 @@ def product_create(request):
                                          quantity=0,
                                          description=request.POST.get('description'),
                                          image=request.FILES.get('image'),
-                                         produced=request.POST.get('produced'))
+                                         produced=request.POST.get('produced') == 'on')
 
         product.save()
         return HttpResponseRedirect("/")

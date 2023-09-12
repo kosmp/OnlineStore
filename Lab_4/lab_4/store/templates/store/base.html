@@ -7,17 +7,58 @@
         <link href="{% static "css/base.css" %}" rel="stylesheet">
     </head>
     <body>
-        <div id="header">
-            <a href="/" class="logo">Shop</a>
-            {% if user.is_superuser %}
-            <a href="/statistic/">Statistic</a>
-            {% endif %}
-        </div>
-        <div id="subheader">
+        <header>
+            <div id="link_buttons">
+                <a href="/" class="logo">MainPage</a>
+                <a href="/about/" class="logo">About</a>
+                <a href="/shop/" class="logo">Shop</a>
+                <a href="/news/" class="logo">News</a>
+                <a href="/glossary/" class="logo">Glossarry</a>
+                <a href="/contacts/" class="logo">Contacts</a>
+                <a href="/policy/" class="logo">Privacy policy</a>
+                <a href="/reviews/" class="logo">Reviews</a>
+                <a href="/promocodes/" class="logo">Promocodes</a>
+                {% if user.is_superuser %}
+                <a href="/statistic/">Statistic</a>
+                {% endif %}
+            </div>
+            <div id="date_container">
                 Current Date: <span id='date'></span>
-                 | Current time: <span id='time'></span>
-                 | Current time zone: <span id='zone'></span>
-            <script>
+                | Current time: <span id='time'></span>
+                | Current time zone: <span id='zone'></span>
+            </div>
+            <div class="cart">
+                {% if user.is_authenticated %}
+                {% with total_items=cart|length %}
+                {% if cart|length > 0 %}
+                In cart:
+                <a href="{% url 'cart:cart_detail' %}">
+                    {{ total_items }} pcs, {{ cart.get_total_price }}
+                </a>
+                {% else %}
+                Cart empty
+                {% endif %}
+                {% endwith %}
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                | {{ user.username }} |
+                <a href="{% url 'login:logout' %}">Out</a>
+                {% else %}
+                <a href="{% url 'login:login' %}">Sign in</a>
+                <a href="{% url 'login:register' %}">Sign up</a>
+                {% endif %}
+            </div>
+        </header>
+        <main>
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+        <script>
                 const today = new Date();
                 const yyyy = today.getFullYear();
                 let mm = today.getMonth() + 1; // Months start at 0!
@@ -36,7 +77,7 @@
                 if (mm < 10) mm = '0' + mm;
 
                 let formattedToday = dd + '/' + mm + '/' + yyyy;
-                let time = h+":"+min+":"+sec; 
+                let time = h+":"+min+":"+sec;
                 let tz = -(new Date().getTimezoneOffset() / 60);
                 if(tz>0){
                     tz = "+" + tz;
@@ -45,32 +86,6 @@
                 document.getElementById('date').innerHTML=formattedToday;
                 document.getElementById('time').innerHTML=time;
                 document.getElementById('zone').innerHTML=tz;
-            </script>
-            <div class="cart">
-                {% if user.is_authenticated %}
-                {% with total_items=cart|length %}
-                {% if cart|length > 0 %}
-                In cart:
-                <a href="{% url 'cart:cart_detail' %}">
-                    {{ total_items }} pcs, {{ cart.get_total_price }} 
-                </a>
-                {% else %}
-                Cart empty
-                {% endif %}
-                {% endwith %}
-                {% endif %}
-
-                {% if user.is_authenticated %}
-                | {{ user.username }} |
-                <a href="{% url 'login:logout' %}">Out</a>
-                {% else %}
-                <a href="{% url 'login:login' %}">Sign in</a>
-                <a href="{% url 'login:register' %}">Sign up</a>
-                {% endif %}
-            </div>
-        </div>
-        <div id="content">
-            {% block content %}{% endblock %}
-        </div>
+        </script>
     </body>
 </html>
