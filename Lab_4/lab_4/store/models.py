@@ -3,6 +3,19 @@ from django.urls import reverse
 
 # Create your models here.
 
+
+class Article(models.Model):
+    title = models.CharField(max_length=100, help_text="enter title of the article")
+
+    summury = models.TextField(max_length=500, help_text="enter summury of the article")
+
+    image = models.ImageField(upload_to="images/article_photos/", help_text="Enter article photo")
+
+    content = models.TextField(help_text="enter content of the article")
+
+    creation_date = models.DateTimeField(auto_now_add=True)
+
+
 class ProductType(models.Model) :
     
     name = models.CharField(max_length=200,

@@ -5,6 +5,8 @@ app_name = 'store'
 
 urlpatterns = [
      path('', views.main_page, name='main_page'),
+     path('articles/', views.articles_page, name='articles_page'),
+     path('articles/article/<int:pk>/', views.article_page, name="article-page"),
      path('about/', views.about_page, name='about_page'),
      path('shop/', views.product_list, name='product_list'),
      path('news/', views.news_page, name='new_page'),

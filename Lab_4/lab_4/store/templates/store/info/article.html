@@ -1,0 +1,10 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<article class="article-page">
+    <img src="{{article.image.url}}" alt="Photo doesnt exist" style="max-width: 500px;">
+    <h1>{{ article.title }}</h1>
+    <h2>{{ article.summury }}</h2>
+    {{article.content}}
+</article>
+{% endblock %}

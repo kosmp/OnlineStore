@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import ProductType, Product, ModelType
+from .models import ProductType, Product, ModelType, Article
 from cart.forms import CartAddProductForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
@@ -9,7 +9,27 @@ import requests
 
 
 def main_page(request):
-    return render(request, 'store/info/mainPage.html')
+    article = Article.objects.latest("creation_date")
+
+    return render(request, 'store/info/mainPage.html', {
+        'article': article,
+    })
+
+
+def articles_page(request):
+    articles = Article.objects.all()
+
+    return render(request, 'store/info/articles.html', {
+        'articles': articles,
+    })
+
+
+def article_page(request, pk):
+    article = get_object_or_404(Article, id=pk)
+
+    return render(request, 'store/info/article.html', {
+        'article': article,
+    })
 
 
 def about_page(request):

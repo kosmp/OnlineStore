@@ -8,20 +8,23 @@
     </head>
     <body>
         <header>
-            <div id="link_buttons">
-                <a href="/" class="logo">MainPage</a>
-                <a href="/about/" class="logo">About</a>
-                <a href="/shop/" class="logo">Shop</a>
-                <a href="/news/" class="logo">News</a>
-                <a href="/glossary/" class="logo">Glossarry</a>
-                <a href="/contacts/" class="logo">Contacts</a>
-                <a href="/policy/" class="logo">Privacy policy</a>
-                <a href="/reviews/" class="logo">Reviews</a>
-                <a href="/promocodes/" class="logo">Promocodes</a>
-                {% if user.is_superuser %}
-                <a href="/statistic/">Statistic</a>
-                {% endif %}
-            </div>
+            <nav>
+                <div id="link_buttons">
+                    <a href="/" class="logo">MainPage</a>
+                    <a href="/articles/" class="logo">Articles</a>
+                    <a href="/about/" class="logo">About</a>
+                    <a href="/shop/" class="logo">Shop</a>
+                    <a href="/news/" class="logo">News</a>
+                    <a href="/glossary/" class="logo">Glossarry</a>
+                    <a href="/contacts/" class="logo">Contacts</a>
+                    <a href="/policy/" class="logo">Privacy policy</a>
+                    <a href="/reviews/" class="logo">Reviews</a>
+                    <a href="/promocodes/" class="logo">Promocodes</a>
+                    {% if user.is_superuser %}
+                    <a href="/statistic/">Statistic</a>
+                    {% endif %}
+                </div>
+            </nav>
             <div id="date_container">
                 Current Date: <span id='date'></span>
                 | Current time: <span id='time'></span>
@@ -56,7 +59,33 @@
             </div>
         </main>
         <footer>
-
+            <div itemscope itemtype="Http://data-vocabulary.org/Organization" class="footer_div_container">
+                <section>
+                    <h2>Our Partners:</h2>
+                    <ul class="partner-list">
+                        <li>
+                            <a href="https://www.spacex.com/" target="_blank">
+                                <img src="/media/images/partners/spacex_logo.jpg" alt="SpaceX logo">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.nasa.gov/" target="_blank">
+                                <img src="/media/images/partners/nasa_logo.jpg" alt="Nasa logo">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" target="_blank">
+                                <img src="/media/images/partners/Twitter-Logo.jpg" alt="Twitter logo">
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    Our contacts:
+                    <a itemprop="email" href="mailto:tedasdgsd@gfds.com?subject=Вопрос">mail: tedasdgsd@gfds.com</a>
+                    <a itemprop="telephone" href="tel:43462326">telephone: 43462326</a>
+                </section>
+            </div>
         </footer>
         <script>
                 const today = new Date();

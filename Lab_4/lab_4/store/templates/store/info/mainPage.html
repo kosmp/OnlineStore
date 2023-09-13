@@ -2,7 +2,18 @@
 {% load static %}
 {% block title %}Mainpage{% endblock %}
 {% block content %}
-    <div id="main" class="main_page">
+    <div class="main_page">
+        <article>
+            <h2>Latest article:</h2>
+            <h3>{{ article.title }}</h3>
+            <h4>{{ article.summury }}</h4>
+            <img src="{{article.image.url}}" alt="Photo doesnt exist">
+            <br />
+            <a href="/articles/article/{{article.pk}}">Read more</a>
 
+        </article>
+        <aside>
+            <img src="/media/images/banners/banner.png" alt="Advertisment banner" style="max-width: 70%">
+        </aside>
     </div>
 {%  endblock%}
