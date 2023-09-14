@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.core.validators import RegexValidator
 
 # Create your models here.
 
@@ -49,7 +50,34 @@ class Product(models.Model) :
         return reverse('store:product_detail', args=[str(self.id)])
 
     def __str__(self) :
-        return self.name   
+        return self.name
+
+
+class Position(models.Model):
+    name = models.CharField(max_length=20, help_text="Enter a position")
+
+    def __str__(self):
+        return self.name
+
+
+class Employee(models.Model):
+    user_name = models.CharField(max_length=20, help_text="Enter user name")
+
+    photo = models.ImageField(upload_to="images/profile_photos/", help_text="Enter profile photo")
+
+    first_name = models.CharField(max_length=20, help_text="Enter full name")
+
+    last_name = models.CharField(max_length=20, help_text="Enter last name")
+
+    num_validator = RegexValidator(regex=r"^\+375 \(29\) \d{3}-\d{2}-\d{2}$")
+
+    phone_number = models.CharField(max_length=20, validators=[num_validator], default='+375 (29) xxx-xx-xx')
+
+    position = models.ForeignKey('Position', on_delete=models.CASCADE, related_name="employee")
+
+    def __str__(self):
+        return f"{self.last_name} {self.position}"
+
 
 class Client(models.Model) :
 

@@ -9,7 +9,6 @@ urlpatterns = [
      path('articles/article/<int:pk>/', views.article_page, name="article-page"),
      path('about/', views.about_page, name='about_page'),
      path('shop/', views.product_list, name='product_list'),
-     path('news/', views.news_page, name='new_page'),
      path('glossary/', views.glossary_page, name='glossary_page'),
      path('contacts/', views.contacts_page, name='contacts_page'),
      path('policy/', views.privacy_policy_page, name='privacy_policy_page'),

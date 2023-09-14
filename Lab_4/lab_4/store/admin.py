@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, ModelType, ProductType, Client, Article
+from .models import Product, ModelType, ProductType, Client, Article, Employee, Position
 # Register your models here.
 
 
@@ -29,4 +29,14 @@ class ClientAdmin(admin.ModelAdmin) :
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Employee)
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display = ('user_name', 'first_name', 'last_name', 'phone_number', 'position')
+
+
+@admin.register(Position)
+class PositionAdmin(admin.ModelAdmin):
     pass

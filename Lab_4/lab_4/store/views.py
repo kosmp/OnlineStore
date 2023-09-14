@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import ProductType, Product, ModelType, Article
+from .models import ProductType, Product, ModelType, Article, Employee
 from cart.forms import CartAddProductForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
@@ -36,16 +36,16 @@ def about_page(request):
     return render(request, 'store/info/about.html')
 
 
-def news_page(request):
-    return render(request, 'store/info/news.html')
-
-
 def glossary_page(request):
     return render(request, 'store/info/glossaryOfTermsAndConcepts.html')
 
 
 def contacts_page(request):
-    return render(request, 'store/info/contacts.html')
+    employees = Employee.objects.all()
+
+    return render(request, 'store/info/contacts.html', {
+        'employees': employees
+    })
 
 
 def privacy_policy_page(request):

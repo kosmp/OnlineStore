@@ -2,7 +2,20 @@
 {% load static %}
 {% block title %}Contacts{% endblock %}
 {% block content %}
-    <div id="main" class="contacts_page">
-
-    </div>
+<section class="contacts_page">
+    <h1>Our employees</h1>
+    <ul>
+        {% for employee in employees %}
+        <li>
+            <img src="{{employee.photo.url}}" alt="employee image" style="max-width: 200px;"><br />
+            <h3>{{employee.first_name}}</h3>
+            <h3>{{employee.last_name}}</h3>
+            <h3>{{employee.position}}</h3>
+            <h3>{{employee.phone_number}}</h3><br />
+        </li>
+        {% empty %}
+        <li>No employees yet.</li>
+        {% endfor %}
+    </ul>
+</section>
 {%  endblock%}
