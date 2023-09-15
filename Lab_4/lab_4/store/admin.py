@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import Product, ModelType, ProductType, Client, Article, Employee, Position
+from .models import Product, ModelType, ProductType, Client, Article, Employee, Position, Promocode
+from .forms import PromocodeForm
 # Register your models here.
 
 
@@ -40,3 +41,10 @@ class EmployeeAdmin(admin.ModelAdmin):
 @admin.register(Position)
 class PositionAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(Promocode)
+class PromocodeAdmin(admin.ModelAdmin):
+    list_display = ('code', 'start_date', 'expiration_date')
+
+    form = PromocodeForm

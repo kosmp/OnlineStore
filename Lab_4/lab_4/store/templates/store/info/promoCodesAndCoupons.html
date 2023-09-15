@@ -2,7 +2,192 @@
 {% load static %}
 {% block title %}Promocodes{% endblock %}
 {% block content %}
-    <div id="main" class="promo_codes_page">
+    <section id="anchor_section">
+        <a href="#valid_p">Valid promocodes</a>
+        <a href="#expired_p">Expired promocodes</a>
+        <a href="#inactive_p">Inactive promocodes</a>
+    </section>
 
-    </div>
-{%  endblock%}
+    <article>
+        <h1>Valid Promocodes</h1>
+        <ol id="valid_p">
+            {% for valid in valid_promocodes %}
+                <li>
+                    {{ valid.code }}
+                </li>
+                {% empty %}
+                <li>No promocodes yet.</li>
+            {% endfor %}
+        </ol>
+    </article>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <a href="#anchor_section">To top of page</a>
+    <article>
+        <h1>Expired Promocodes</h1>
+        <ol id="expired_p">
+            {% for expired in expired_promocodes %}
+                <li>
+                    {{ expired.code }}
+                </li>
+                {% empty %}
+                <li>No promocodes yet.</li>
+            {% endfor %}
+        </ol>
+    </article>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <a href="#anchor_section">To top of page</a>
+    <article>
+        <h1>Inactive Promocodes</h1>
+        <ul id="inactive_p">
+            {% for inactive in inactive_promocodes %}
+                <li>
+                    {{ inactive.code }}
+                </li>
+                {% empty %}
+                <li>No promocodes yet.</li>
+            {% endfor %}
+        </ul>
+    </article>
+{% endblock %}

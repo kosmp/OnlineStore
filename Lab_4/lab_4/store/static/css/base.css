@@ -187,6 +187,14 @@ main #content {
     overflow:hidden;
 }
 
+#anchor_section {
+    margin-top: 20px;
+}
+
+#anchor_section a {
+    margin-right: 10px;
+}
+
 .partner-list {
     list-style: none;
     padding: 0;

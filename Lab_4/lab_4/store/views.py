@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from .models import ProductType, Product, ModelType, Article, Employee
+from .models import ProductType, Product, ModelType, Article, Employee, Promocode
 from cart.forms import CartAddProductForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
 from .forms import ProductForm
 from django.core.exceptions import PermissionDenied
+from datetime import date, datetime, timezone
 import requests
 
 
@@ -48,16 +49,23 @@ def contacts_page(request):
     })
 
 
+def promo_codes_page(request):
+    valid_promocodes = Promocode.objects.filter(start_date__lt=datetime.now(), expiration_date__gt=datetime.now())
+    expired_promocodes = Promocode.objects.filter(start_date__lt=datetime.now(), expiration_date__lt=datetime.now())
+    inactive_promocodes = Promocode.objects.filter(start_date__gt=datetime.now())
+
+    return render(request, 'store/info/promoCodesAndCoupons.html', {
+        'valid_promocodes': valid_promocodes,
+        'expired_promocodes': expired_promocodes,
+               'inactive_promocodes': inactive_promocodes})
+
+
 def privacy_policy_page(request):
     return render(request, 'store/info/privacyPolicy.html')
 
 
 def reviews_page(request):
     return render(request, 'store/info/reviews.html')
-
-
-def promo_codes_page(request):
-    return render(request, 'store/info/promoCodesAndCoupons.html')
 
 
 def product_list(request, product_type_name = None):

@@ -108,4 +108,15 @@ class ModelType(models.Model):
         return reverse('modelType-detail', args=[str(self.id)])
 
     def __str__(self) :
-        return self.name 
+        return self.name
+
+
+class Promocode(models.Model):
+    code = models.CharField(max_length=50, help_text="enter Promocode")
+
+    start_date = models.DateTimeField()
+
+    expiration_date = models.DateTimeField()
+
+    def __str__(self):
+        return self.code
