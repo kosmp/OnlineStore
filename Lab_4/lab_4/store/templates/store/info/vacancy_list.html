@@ -3,13 +3,13 @@
 {% block content %}
 <h1>Vacancies</h1>
 <ul>
-    {% for vacancy in object_list %}
+    {% for vacancy in vacancies %}
     <li>
         <a href="/vacancy/{{vacancy.pk}}">
-            <h1>{{ vacancy.position }}</h1>
+            <h1>Position: {{ vacancy.position }}</h1>
         </a>
-        <h2>{{ vacancy.salary }}</h2><br />
-        <p>{{ vacancy.company_name }}</p>
+        <h2>Salary: {{ vacancy.salary }}</h2>
+        <p>Company name: {{ vacancy.company_name }}</p>
         {{ vacancy.experience }} | {{ vacancy.city }}
         <br />
         <br />

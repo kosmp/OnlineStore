@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import ProductType, Product, ModelType, Article, Employee, Promocode, FAQ
+from .models import ProductType, Product, ModelType, Article, Employee, Promocode, FAQ, Vacancy
 from cart.forms import CartAddProductForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
@@ -70,11 +70,19 @@ def reviews_page(request):
 
 
 def vacancies_page(request):
-    return render(request, 'store/info/vacancy_list.html')
+    vacancies = Vacancy.objects.all()
+
+    return render(request, 'store/info/vacancy_list.html', {
+        'vacancies': vacancies
+    })
 
 
-def vacancy_detail(request):
-    return render(request, 'store/info/vacancy_detail.html')
+def vacancy_detail(request, pk):
+    vacancy = get_object_or_404(Vacancy, id = pk)
+
+    return render(request, 'store/info/vacancy_detail.html', {
+        'vacancy': vacancy
+    })
 
 
 def product_list(request, product_type_name = None):

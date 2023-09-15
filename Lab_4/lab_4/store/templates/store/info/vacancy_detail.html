@@ -1,25 +1,22 @@
 {% extends "store/base.html" %}
 {% load static %}
 {% block content %}
-    <b> {{ vacancy.position }}</b>
-    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{ vacancy.salary }}<br/>
-
-    {{ vacancy.company_name }}
+    <h2><b>Position: {{ vacancy.position }}</b></h2>
+    <b>Salary: {{ vacancy.salary }}</b>
     <br/>
-    {{ vacancy.city }}
+    Company: {{ vacancy.company_name }}
     <br/>
-    <hr/>
+    City: {{ vacancy.city }}
+    <br/>
     Nature of work: {{ vacancy.job_character }}
     <br/>
     Schedule: {{ vacancy.schedule }}
     <br/>
-    Employement: {{ vacancy.employement }}
+    Employment: {{ vacancy.employment }}
     <br/>
     <br/>
-    <br/>
-
-    <h2>Requirements for a candidate</h2>
     <hr/>
+    <h2>Requirements for a candidate</h2>
     Experience: {{ vacancy.experience }}
     <br/>
     Education: {{ vacancy.education }}
@@ -27,7 +24,9 @@
     <br/>
     <br/>
 
-    Vacancy description
-    <hr/>
+    Vacancy description:
     {{ vacancy.description }}
+    <br/>
+    <br/>
+    <hr/>
 {% endblock %}
