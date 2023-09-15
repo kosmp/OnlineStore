@@ -4,22 +4,22 @@
 {% block content %}
     <section class="reviews_page">
         <h1>Reviews</h1>
-        <a href="{% url 'review_create' %}">Add Review</a>
+        <a href="{% url 'store:review_create' %}">Add Review</a>
         {% for review in reviews %}
             <div>
                 <h5>{{ review.reviewer }}</h5>
                 <p>{{ review.rate }}</p>
                 <p>{{ review.creation_date }}</p>
-                <a href="{% url 'review_detail' review.pk %}">
+                <a href="{% url 'store:review_detail' review.pk %}">
                     Read more
                 </a>
-                <a href="{% url 'review_delete' review.pk %}">
+                <a href="{% url 'store:review_delete' review.pk %}">
                     Delete review
                 </a>
             </div>
             {% empty %}
             <h3>No reviews yet.</h3>
-            <a href="{% url 'review_create' %}">Add Review</a>
+            <a href="{% url 'store:review_create' %}">Add Review</a>
         {% endfor %}
     </section>
 {% endblock %}

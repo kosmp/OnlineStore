@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+
 from .models import ProductType, Product, ModelType, Article, Employee, Promocode, FAQ, Vacancy, Review
 from cart.forms import CartAddProductForm
 from .forms import ReviewForm
@@ -64,10 +66,6 @@ def promo_codes_page(request):
 
 def privacy_policy_page(request):
     return render(request, 'store/info/privacyPolicy.html')
-
-
-def reviews_page(request):
-    return render(request, 'store/info/reviews.html')
 
 
 def vacancies_page(request):
@@ -209,7 +207,7 @@ def review_create(request):
         form = ReviewForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("reviews/")
+            return HttpResponseRedirect(reverse('store:reviews_page'))
     else:
         form = ReviewForm()
 
@@ -225,7 +223,7 @@ def review_update(request, pk):
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect("reviews/")
+            return HttpResponseRedirect(reverse('store:reviews_page'))
     else:
         form = ReviewForm(instance=review)
 
@@ -239,7 +237,7 @@ def review_delete(request, pk):
 
     if request.method == 'POST':
         review.delete()
-        return HttpResponseRedirect("reviews/")
+        return HttpResponseRedirect(reverse('store:reviews_page'))
 
     return render(request, 'store/info/review_delete.html', {
         'review': review

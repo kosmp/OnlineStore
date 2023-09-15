@@ -2,22 +2,10 @@
 {% load static %}
 {% block title %}Review Details{% endblock %}
 {% block content %}
-    <h1>Reviews</h1>
-    <a href="{% url 'review_create' %}">Add Review</a>
-    {% for review in reviews %}
-        <div>
-            <h5>{{ review.reviewer }}</h5>
-            <p>{{ review.rate }}</p>
-            <p>{{ review.creation_date }}</p>
-            <a href="{% url 'review_detail' review.pk %}">
-                Read more
-            </a>
-            <a href="{% url 'review_delete' review.pk %}">
-                Delete review
-            </a>
-        </div>
-        {% empty %}
-        <h3>No reviews yet.</h3>
-        <a href="{% url 'review_create' %}">Add Review</a>
-    {% endfor %}
+    <h1>{{ review.reviewer }}</h1>
+    <p>{{ review.rate }}</p>
+    <p>{{ review.text }}</p>
+    <p>{{ review.creation_date }}</p>
+    <a href="{% url 'store:review_update' review.pk %}">Edit review</a>
+    <a href="{% url 'store:review_delete' review.pk %}">Delete review</a>
 {% endblock %}
