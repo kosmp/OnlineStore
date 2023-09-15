@@ -1,8 +1,6 @@
 from django.contrib import admin
-
-from .models import Product, ModelType, ProductType, Client, Article, Employee, Position, Promocode, FAQ, Vacancy
+from .models import Product, ModelType, ProductType, Client, Article, Employee, Position, Promocode, FAQ, Vacancy, Review
 from .forms import PromocodeForm
-# Register your models here.
 
 
 @admin.register(Product)
@@ -56,4 +54,9 @@ class FAQAdmin(admin.ModelAdmin):
 
 @admin.register(Vacancy)
 class VacancyAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
     pass

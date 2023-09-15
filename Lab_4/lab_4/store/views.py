@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from .models import ProductType, Product, ModelType, Article, Employee, Promocode, FAQ, Vacancy
+from .models import ProductType, Product, ModelType, Article, Employee, Promocode, FAQ, Vacancy, Review
 from cart.forms import CartAddProductForm
+from .forms import ReviewForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
 from .forms import ProductForm
@@ -185,3 +186,61 @@ def product_delete(request, id):
         return HttpResponseRedirect("/")
     except product.DoesNotExist:
         return HttpResponseNotFound("<h2>product not found</h2>")
+
+
+def reviews_page(request):
+    reviews = Review.objects.all()
+
+    return render(request, 'store/info/reviews.html', {
+        'reviews': reviews
+    })
+
+
+def review_detail(request, pk):
+    review = get_object_or_404(Review, id=pk)
+
+    return render(request, 'store/info/review_detail.html', {
+        'review': review,
+    })
+
+
+def review_create(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("reviews/")
+    else:
+        form = ReviewForm()
+
+    return render(request, 'store/info/review_form.html', {
+        'form': form
+    })
+
+
+def review_update(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("reviews/")
+    else:
+        form = ReviewForm(instance=review)
+
+    return render(request, 'store/info/review_form.html', {
+        'form': form
+    })
+
+
+def review_delete(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+
+    if request.method == 'POST':
+        review.delete()
+        return HttpResponseRedirect("reviews/")
+
+    return render(request, 'store/info/review_delete.html', {
+        'review': review
+    })

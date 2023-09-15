@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
-from django.core.validators import RegexValidator
+from django.core import validators
+from django.core.validators import RegexValidator, MinValueValidator, MaxValueValidator
 
 # Create your models here.
 
@@ -145,6 +146,17 @@ class Promocode(models.Model):
 
     def __str__(self):
         return self.code
+
+
+class Review(models.Model):
+    reviewer = models.CharField(max_length=50, help_text="enter reviewer")
+
+    rate = models.PositiveIntegerField(validators=[validators.MinValueValidator(1), validators.MaxValueValidator(10)],
+                                       help_text="enter rate")
+
+    text = models.TextField(help_text="enter review text")
+
+    creation_date = models.DateTimeField(auto_now_add=True)
 
 
 class FAQ(models.Model):

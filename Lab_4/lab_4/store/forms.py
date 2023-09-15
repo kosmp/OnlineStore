@@ -1,5 +1,6 @@
 from django import forms
-from .models import Product, Promocode
+from .models import Product, Promocode, Review
+from django.core import validators
 
 
 class ProductForm(forms.ModelForm):
@@ -22,3 +23,15 @@ class PromocodeForm(forms.ModelForm):
     class Meta:
         model = Promocode
         fields = '__all__'
+
+
+class ReviewForm(forms.ModelForm):
+    reviewer = forms.CharField(max_length=50)
+
+    rate = forms.IntegerField(validators=[validators.MinValueValidator(1), validators.MaxValueValidator(10)])
+
+    text = forms.Textarea()
+
+    class Meta:
+        model = Review
+        fields = ['reviewer', 'rate', 'text']

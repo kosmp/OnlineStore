@@ -1,0 +1,26 @@
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div>
+            <label for="{{ form.reviewer.id_for_label }}">Reviewer name:</label>
+            {{ form.reviewer }}
+            {{ form.reviewer.errors }}
+        </div>
+        <div>
+            <label for="{{ form.rate.id_for_label }}">Rate:</label>
+            {{ form.rate }}
+            {{ form.rate.errors }}
+        </div>
+        <div>
+            <label for="{{ form.text.id_for_label }}">Review text:</label>
+            {{ form.text }}
+            {{ form.text.errors }}
+        </div>
+        <input type="submit" value="review"/>
+    </form>
+{% endblock %}
