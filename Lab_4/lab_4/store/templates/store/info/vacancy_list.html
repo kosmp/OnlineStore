@@ -1,0 +1,22 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block content %}
+<h1>Vacancies</h1>
+<ul>
+    {% for vacancy in object_list %}
+    <li>
+        <a href="/vacancy/{{vacancy.pk}}">
+            <h1>{{ vacancy.position }}</h1>
+        </a>
+        <h2>{{ vacancy.salary }}</h2><br />
+        <p>{{ vacancy.company_name }}</p>
+        {{ vacancy.experience }} | {{ vacancy.city }}
+        <br />
+        <br />
+    </li>
+    {% empty %}
+    <li>No vacancies yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

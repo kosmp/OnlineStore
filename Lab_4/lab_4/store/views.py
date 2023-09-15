@@ -69,6 +69,14 @@ def reviews_page(request):
     return render(request, 'store/info/reviews.html')
 
 
+def vacancies_page(request):
+    return render(request, 'store/info/vacancy_list.html')
+
+
+def vacancy_detail(request):
+    return render(request, 'store/info/vacancy_detail.html')
+
+
 def product_list(request, product_type_name = None):
     product_type = None
     types = ProductType.objects.all()

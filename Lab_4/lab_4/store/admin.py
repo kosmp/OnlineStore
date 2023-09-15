@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, ModelType, ProductType, Client, Article, Employee, Position, Promocode, FAQ
+from .models import Product, ModelType, ProductType, Client, Article, Employee, Position, Promocode, FAQ, Vacancy
 from .forms import PromocodeForm
 # Register your models here.
 
@@ -52,3 +52,8 @@ class PromocodeAdmin(admin.ModelAdmin):
 @admin.register(FAQ)
 class FAQAdmin(admin.ModelAdmin):
     list_display = ('question', 'answer', 'date_added')
+
+
+@admin.register(Vacancy)
+class VacancyAdmin(admin.ModelAdmin):
+    pass

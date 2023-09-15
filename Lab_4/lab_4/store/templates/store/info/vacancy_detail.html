@@ -1,0 +1,33 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block content %}
+    <b> {{ vacancy.position }}</b>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{ vacancy.salary }}<br/>
+
+    {{ vacancy.company_name }}
+    <br/>
+    {{ vacancy.city }}
+    <br/>
+    <hr/>
+    Nature of work: {{ vacancy.job_character }}
+    <br/>
+    Schedule: {{ vacancy.schedule }}
+    <br/>
+    Employement: {{ vacancy.employement }}
+    <br/>
+    <br/>
+    <br/>
+
+    <h2>Requirements for a candidate</h2>
+    <hr/>
+    Experience: {{ vacancy.experience }}
+    <br/>
+    Education: {{ vacancy.education }}
+    <br/>
+    <br/>
+    <br/>
+
+    Vacancy description
+    <hr/>
+    {{ vacancy.description }}
+{% endblock %}

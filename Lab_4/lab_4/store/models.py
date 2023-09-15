@@ -79,6 +79,31 @@ class Employee(models.Model):
         return f"{self.last_name} {self.position}"
 
 
+class Vacancy(models.Model):
+    position = models.CharField(max_length=50, help_text="enter employee position")
+
+    company_name = models.CharField(max_length=50, help_text="enter company name")
+
+    city = models.CharField(max_length=50, help_text="enter city")
+
+    job_character = models.CharField(max_length=50, help_text="enter job character")
+
+    schedule = models.CharField(max_length=50, help_text="enter schedule")
+
+    employment = models.CharField(max_length=50, help_text="enter employement")
+
+    experience = models.CharField(max_length=50, help_text="enter experience")
+
+    education = models.CharField(max_length=50, help_text="enter education")
+
+    description = models.TextField(help_text="enter vacancy description")
+
+    salary = models.CharField(max_length=50, help_text="enter salary")
+
+    def __str__(self):
+        return f"{self.position} {self.company_name}"
+
+
 class Client(models.Model) :
 
     first_name = models.CharField(max_length=200,
