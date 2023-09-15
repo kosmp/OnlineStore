@@ -2,7 +2,30 @@
 {% load static %}
 {% block title %}Glossary{% endblock %}
 {% block content %}
-    <div id="main" class="glossary_page">
+    <section>
+        <h1>Toy Glossary</h1>
+        {% for faq in faqs %}
+            <article>
+                <details>
+                    <summary>{{ faq.question }}</summary>
+                    <p>Added on: {{ faq.date_added|date }}</p>
 
-    </div>
-{%  endblock%}
+                    {{ faq.answer }}
+                </details>
+            </article>
+        {% endfor %}
+        <br/>
+        <br/>
+        <p><dfn><abbr title="Toy Manufacturers Association">TMA</abbr></dfn> An industry organization dedicated to
+            promoting
+            excellence
+            within the toy manufacturing community.</p>
+        <p><dfn><abbr title="Toy Safety Standards">TSS</abbr></dfn> Standards and regulations that ensure the safety of
+            toys
+            for
+            children, established by industry and government organizations.</p>
+        <p><dfn><abbr title="Toy Collectors Society">TCS</abbr></dfn> A community of toy enthusiasts and collectors who
+            share a passion
+            for rare and vintage toys.</p>
+    </section>
+{% endblock %}

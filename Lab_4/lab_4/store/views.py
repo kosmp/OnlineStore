@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import ProductType, Product, ModelType, Article, Employee, Promocode
+from .models import ProductType, Product, ModelType, Article, Employee, Promocode, FAQ
 from cart.forms import CartAddProductForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
@@ -38,7 +38,8 @@ def about_page(request):
 
 
 def glossary_page(request):
-    return render(request, 'store/info/glossaryOfTermsAndConcepts.html')
+    faqs = FAQ.objects.all().order_by('-date_added')
+    return render(request, 'store/info/glossaryOfTermsAndConcepts.html', {'faqs': faqs})
 
 
 def contacts_page(request):
