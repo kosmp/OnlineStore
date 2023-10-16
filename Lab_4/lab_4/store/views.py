@@ -10,6 +10,7 @@ from .forms import ProductForm
 from django.core.exceptions import PermissionDenied
 from datetime import date, datetime, timezone
 import requests
+from docx import Document
 
 
 def main_page(request):
@@ -65,7 +66,13 @@ def promo_codes_page(request):
 
 
 def privacy_policy_page(request):
-    return render(request, 'store/info/privacyPolicy.html')
+    doc = Document("./media/privacy_policy/privacy_policy.docx")
+    html = ""
+
+    for paragraph in doc.paragraphs:
+        html += "<p>{0}</p>".format(paragraph.text.replace('\n', '<br>'))
+
+    return render(request, "store/info/privacyPolicy.html", {"privacy" : html})
 
 
 def vacancies_page(request):
@@ -242,3 +249,7 @@ def review_delete(request, pk):
     return render(request, 'store/info/review_delete.html', {
         'review': review
     })
+
+
+def miscellaneous(request):
+    return render(request, "store/info/miscellaneous.html")

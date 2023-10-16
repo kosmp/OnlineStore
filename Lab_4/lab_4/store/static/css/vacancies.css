@@ -1,0 +1,33 @@
+@font-face {
+    font-family: "Cattedrale";
+    src: url("../../../media/fonts/Cattedrale.ttf") format("truetype");
+    font-style: normal; 
+    font-weight: normal; 
+  }
+
+.vacancy {
+    background-color: #5bc9e4af;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.vacancy-name {
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    font-family: "Cattedrale";
+    border-color: black;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.vacancy-description {
+    margin-top: 5px;
+}
+
+.vacancy-salary {
+    clear: both;
+}

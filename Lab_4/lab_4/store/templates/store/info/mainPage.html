@@ -1,19 +1,39 @@
 {% extends "store/base.html" %}
 {% load static %}
 {% block title %}Mainpage{% endblock %}
+{% block head %}
+    <link href="{% static "css/home_page.css" %}" rel="stylesheet">
+{% endblock %}
 {% block content %}
-    <div class="main_page">
-        <article>
+    <main>
+        <article class="position-object">
             <h2>Latest article:</h2>
             <h3>{{ article.title }}</h3>
             <h4>{{ article.summury }}</h4>
-            <img src="{{article.image.url}}" alt="Photo doesnt exist">
-            <br />
-            <a href="/articles/article/{{article.pk}}">Read more</a>
+            <img src="{{ article.image.url }}" alt="Photo doesnt exist">
+            <br/>
+            <a href="/articles/article/{{ article.pk }}">Read more</a>
 
         </article>
-        <aside>
-            <img src="/media/images/banners/banner.png" alt="Advertisment banner" style="max-width: 70%">
-        </aside>
-    </div>
-{%  endblock%}
+        <h2>Our Partners:</h2>
+        <section class="partner-container">
+            <a href="https://www.spacex.com/" target="_blank"> SpaceX </a>
+            <p> amazing partner </p>
+            <img src="/media/images/partners/spacex_logo.jpg" alt="SpaceX logo" width="200" height="200">
+        </section>
+        <section class="partner-container">
+            <a href="https://www.nasa.gov/" target="_blank"> Nasa </a>
+            <p> main investor </p>
+            <img src="/media/images/partners/nasa_logo.jpg" alt="Nasa logo" width="200" height="200">
+        </section>
+        <section class="partner-container">
+            <a href="https://twitter.com/" target="_blank"> Twitter </a>
+            <p> main investor </p>
+            <img src="/media/images/partners/Twitter-Logo.jpg" alt="Twitter logo" width="200" height="200">
+        </section>
+    </main>
+    <aside>
+        <img class="animated-object" src="/media/images/banners/banner.png" alt="Advertisment banner"
+             style="max-width: 70%">
+    </aside>
+{% endblock %}

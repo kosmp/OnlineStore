@@ -1,10 +1,18 @@
-{% extends 'store/base.html' %}
+{% extends "store/base.html" %}
+{% load static %}
+
+{% block title %}Article{% endblock %}
+
+{% block head %}
+    <link href="{% static "css/article.css" %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
-<article class="article-page">
-    <img src="{{article.image.url}}" alt="Photo doesnt exist" style="max-width: 500px;">
-    <h1>{{ article.title }}</h1>
-    <h2>{{ article.summury }}</h2>
-    {{article.content}}
-</article>
+    <article class="article-container">
+        <section class="article-info">
+            <h2>{{ article.title }}</h2>
+            <img src="{{ article.image.url }}">
+        </section>
+        <p class="article-content">{{ article.content }}</p>
+    </article>
 {% endblock %}

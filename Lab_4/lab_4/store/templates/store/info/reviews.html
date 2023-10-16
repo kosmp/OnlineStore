@@ -1,13 +1,44 @@
+{#{% extends "store/base.html" %}#}
+{#{% load static %}#}
+{#{% block title %}Reviews{% endblock %}#}
+{#{% block content %}#}
+{#    <section class="reviews_page">#}
+{#        <h1>Reviews</h1>#}
+{#        <a href="{% url 'store:review_create' %}">Add Review</a>#}
+{#        {% for review in reviews %}#}
+{#            <div>#}
+{#                <h5>{{ review.reviewer }}</h5>#}
+{#                <p>{{ review.rate }}</p>#}
+{#                <p>{{ review.creation_date }}</p>#}
+{#                <a href="{% url 'store:review_detail' review.pk %}">#}
+{#                    Read more#}
+{#                </a>#}
+{#                <a href="{% url 'store:review_delete' review.pk %}">#}
+{#                    Delete review#}
+{#                </a>#}
+{#            </div>#}
+{#            {% empty %}#}
+{#            <h3>No reviews yet.</h3>#}
+{#            <a href="{% url 'store:review_create' %}">Add Review</a>#}
+{#        {% endfor %}#}
+{#    </section>#}
+{#{% endblock %}#}
+
+
 {% extends "store/base.html" %}
 {% load static %}
+
 {% block title %}Reviews{% endblock %}
+
+{% block head %}
+    <link href="{% static "css/reviews.css" %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-    <section class="reviews_page">
-        <h1>Reviews</h1>
-        <a href="{% url 'store:review_create' %}">Add Review</a>
+    <main>
         {% for review in reviews %}
-            <div>
-                <h5>{{ review.reviewer }}</h5>
+            <section class="review">
+                <h3>{{ review.reviewer }}</h3>
                 <p>{{ review.rate }}</p>
                 <p>{{ review.creation_date }}</p>
                 <a href="{% url 'store:review_detail' review.pk %}">
@@ -16,10 +47,8 @@
                 <a href="{% url 'store:review_delete' review.pk %}">
                     Delete review
                 </a>
-            </div>
-            {% empty %}
-            <h3>No reviews yet.</h3>
-            <a href="{% url 'store:review_create' %}">Add Review</a>
+            </section>
         {% endfor %}
-    </section>
+        <a href="{% url 'store:review_create' %}">Add Review</a>
+    </main>
 {% endblock %}

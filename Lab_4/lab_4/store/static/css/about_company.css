@@ -1,0 +1,105 @@
+@font-face {
+    font-family: "Adventure";
+    src: url("../../../media/fonts/ljk_Adventure.ttf") format("truetype");
+    font-style: normal; 
+    font-weight: normal; 
+}
+
+.company-name {
+    letter-spacing: 2px; /* Кернинг */
+    font-family: "Adventure";
+    font-size: 20;
+}
+
+.logotip {
+    -webkit-transition: -webkit-transform 0.9s ease;
+    transition: -webkit-transform 0.9s ease;
+    -o-transition: transform 0.9s ease;
+    transition: transform 0.9s ease;
+}
+
+.logotip:hover {
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
+}
+
+.sertificate {
+    border: 30px black solid; 
+    -o-border-image: url('/media/sertificate/border_image.png') 26 round;
+    border-image: url('/media/sertificate/border_image.png') 26 round;
+    background-image: url('/media/sertificate/background_image.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 5px;
+    margin: 5px;
+    width: 370px;
+    z-index: 10;
+    position: relative;
+}
+
+.sertificate p {
+    text-align: center;
+    color: rgb(184, 248, 255);
+    margin: 10px;
+    width: 350px;
+    z-index: 20;
+    position: relative;
+}
+
+.sertificate h3 {
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    z-index: 20;
+    position: relative;
+}
+
+.history {
+    margin-left: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.history-item {
+    border-left: 2px solid #e74c3c; /* Линия слева */
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.history:last-child {
+    margin-bottom: 0; 
+}
+
+
+.history-year {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin: 10px;
+}
+
+
+.history-description {
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 10px;
+}
+
+.requisite {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+}
+
+.video {
+    background-color: #fff;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    height: 230px;
+}

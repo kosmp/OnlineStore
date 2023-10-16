@@ -1,0 +1,47 @@
+details > summary {
+    padding: 5px;
+    background-color: #eee;
+    color: #333;
+    /*border: 1px #ccc solid;*/
+    cursor: pointer;
+    list-style: none;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+details > p {
+    border: 1px #ccc solid;
+    border-color: black;
+    background-color: white;
+    padding: 10px;
+    margin-top: 0px;
+}
+
+details[open] > summary {
+    color:#eee; 
+    background-color:#333;
+}
+
+summary:before {
+    content: "+";
+    font-size: 20px;
+    font-weight: bold;
+    margin: -5px 5px 0 0;
+}
+
+details[open] summary:before {
+    content: "-";
+}
+
+.title {
+    flex: 1; /* Занимает доступное пространство */
+    text-align: left;
+    margin: 5px;
+}
+  
+.date {
+    flex: 1; 
+    text-align: right;
+    margin: 5px;
+}

@@ -116,29 +116,64 @@ ul.errorlist {
 }
 
 
-header {
-    padding: 10px 100px;
-    background-color: #ececec;
-    font-size: 15px;
+#header {
+    padding:10px 100px;
+    font-size:18px;
     overflow:auto;
-    display: flex;
 }
 
-header #date_container {
+#subheader {
     background:#ececec;
-    color:#000000;
-    margin: 10px;
+    color:#444;
+    padding:15px 100px;
+    overflow:auto;
+}
+
+#header .logo {
+    font-family: 'Ubuntu', sans-serif;
+    float:left;
+    color:#333;
+    font-size:22px;
+    margin-right:10%;
+}
+
+#subheader .cart {
+    float:right;
+    padding-top:4px;
+}
+
+.nav-bar {
+    position: sticky;
+    top: 0;
+    background-color:#fff;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.ref-nav a:link {
+    color: rgb(0, 200, 255); /* Цвет не посещенной ссылки */
+    text-decoration: none;
+}
+
+.ref-nav a:visited {
+    color: purple; /* Цвет посещенной ссылки */
+}
+
+.ref-nav a:hover {
+    color: red; /* Цвет при наведении курсора */
+    text-decoration: underline;
+}
+
+.ref-nav a:active {
+    color: green; /* Цвет при нажатии */
+}
+
+.ref-nav a:focus {
+    outline: 2px solid yellow; /* Обводка вокруг элемента в фокусе */
 }
 
 #link_buttons {
     font-family: 'Ubuntu', sans-serif;
-}
-
-header #link_buttons .logo {
-    display: inline-block;
-    color: #5b80b2;
-    font-size:15px;
-    margin: 10px 30px 10px 0px;
 }
 
 header .cart {
@@ -195,34 +230,8 @@ main #content {
     margin-right: 10px;
 }
 
-.partner-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-start;
-}
-
-.partner-list li {
-    padding: 5px;
-    margin: 0px 40px 0px 0px;
-}
-
-.partner-list img {
-    max-width: 100px;
-    height: auto;
-}
-
 .footer_div_container {
     padding: 0px 100px;
-}
-
-.article-page img {
-    margin: 30px 0px 10px 0px;
-}
-
-.article-page h1 {
-    text-decoration-line: underline;
 }
 
 .product-list .item {

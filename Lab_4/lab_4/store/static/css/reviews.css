@@ -1,0 +1,16 @@
+.review {
+    border: 1px black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgba(234, 244, 43, 0.819);
+    padding: 10px;
+    margin: 10px;
+}
+
+.review p {
+    margin: 5px;
+}
+
+.review h3 {
+    margin: 5px;
+    font-size: 20px;
+}

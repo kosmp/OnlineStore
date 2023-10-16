@@ -1,124 +1,107 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="author" content="tg:@kosmp1" />
-        <meta name="description"
-          content="My study project on web programming" />
-        <title>{% block title %}Shop{% endblock %}</title>
-        <link href="{% static "css/base.css" %}" rel="stylesheet">
-        <link rel="shortcut icon" type="image/png" href="/media/logos/Logo.png">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <div id="link_buttons">
-                    <a href="/" class="logo">MainPage</a>
-                    <a href="/articles/" class="logo">Articles</a>
-                    <a href="/about/" class="logo">About</a>
-                    <a href="/shop/" class="logo">Shop</a>
-                    <a href="/glossary/" class="logo">Glossarry</a>
-                    <a href="/contacts/" class="logo">Contacts</a>
-                    <a href="/vacancy/" class="logo">Vacancy</a>
-                    <a href="/policy/" class="logo">Privacy policy</a>
-                    <a href="/reviews/" class="logo">Reviews</a>
-                    <a href="/promocodes/" class="logo">Promocodes</a>
-                    {% if user.is_superuser %}
-                    <a href="/statistic/">Statistic</a>
-                    {% endif %}
-                </div>
-            </nav>
-            <div id="date_container">
-                Current Date: <span id='date'></span>
-                | Current time: <span id='time'></span>
-                | Current time zone: <span id='zone'></span>
-            </div>
-            <div class="cart">
-                {% if user.is_authenticated %}
-                {% with total_items=cart|length %}
-                {% if cart|length > 0 %}
-                In cart:
-                <a href="{% url 'cart:cart_detail' %}">
-                    {{ total_items }} pcs, {{ cart.get_total_price }}
-                </a>
-                {% else %}
-                Cart empty
-                {% endif %}
-                {% endwith %}
-                {% endif %}
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="tg:@kosmp1"/>
+    <meta name="description"
+          content="My study project on web programming"/>
+    <title>{% block title %}Shop{% endblock %}</title>
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="/media/logos/Logo.png">
+    {% block head %}{% endblock %}
+</head>
+<body>
+<header>
+    <div id="header" class="nav-bar">
+        <nav class="ref-nav">
+            <a href="/" class="logo">MainPage</a>
+            <a href="/articles/" class="logo">Articles</a>
+            <a href="/about/" class="logo">About</a>
+            <a href="/shop/" class="logo">Shop</a>
+            <a href="/glossary/" class="logo">Glossarry</a>
+            <a href="/contacts/" class="logo">Contacts</a>
+            <a href="/vacancy/" class="logo">Vacancy</a>
+            <a href="/policy/" class="logo">Privacy policy</a>
+            <a href="/reviews/" class="logo">Reviews</a>
+            <a href="/promocodes/" class="logo">Promocodes</a>
+            <a href="/miscellaneous/" class="logo">Miscellaneous</a>
+            {% if user.is_superuser %}
+                <a href="/statistic/">Statistic</a>
+            {% endif %}
+        </nav>
+    </div>
+    <div id="subheader">
+        Current Date: <span id='date'></span>
+        | Current time: <span id='time'></span>
+        | Current time zone: <span id='zone'></span>
 
-                {% if user.is_authenticated %}
+        <div class="cart">
+            {% if user.is_authenticated %}
+                {% with total_items=cart|length %}
+                    {% if cart|length > 0 %}
+                        In cart:
+                        <a href="{% url 'cart:cart_detail' %}">
+                            {{ total_items }} pcs, {{ cart.get_total_price }}
+                        </a>
+                    {% else %}
+                        Cart empty
+                    {% endif %}
+                {% endwith %}
+            {% endif %}
+
+            {% if user.is_authenticated %}
                 | {{ user.username }} |
                 <a href="{% url 'login:logout' %}">Out</a>
-                {% else %}
+            {% else %}
                 <a href="{% url 'login:login' %}">Sign in</a>
                 <a href="{% url 'login:register' %}">Sign up</a>
-                {% endif %}
-            </div>
-        </header>
-        <main>
-            <div id="content">
-                {% block content %}{% endblock %}
-            </div>
-        </main>
-        <footer>
-            <div itemscope itemtype="Http://data-vocabulary.org/Organization" class="footer_div_container">
-                <section>
-                    <h2>Our Partners:</h2>
-                    <ul class="partner-list">
-                        <li>
-                            <a href="https://www.spacex.com/" target="_blank">
-                                <img src="/media/images/partners/spacex_logo.jpg" alt="SpaceX logo">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.nasa.gov/" target="_blank">
-                                <img src="/media/images/partners/nasa_logo.jpg" alt="Nasa logo">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/" target="_blank">
-                                <img src="/media/images/partners/Twitter-Logo.jpg" alt="Twitter logo">
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-                <section>
-                    Our contacts:
-                    <a itemprop="email" href="mailto:tedasdgsd@gfds.com?subject=Вопрос">mail: tedasdgsd@gfds.com</a>
-                    <a itemprop="telephone" href="tel:43462326">telephone: 43462326</a>
-                </section>
-            </div>
-        </footer>
-        <script>
-                const today = new Date();
-                const yyyy = today.getFullYear();
-                let mm = today.getMonth() + 1; // Months start at 0!
-                let dd = today.getDate();
-                let h = today.getHours();
-                if (h<10)
-                    h = '0' + h;
-                let min = today.getMinutes();
-                if (min < 10)
-                    min = '0' + min;
-                let sec = today.getSeconds();
-                if (sec < 10)
-                    sec = '0' + sec;
+            {% endif %}
+        </div>
+    </div>
+</header>
+<main>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</main>
+<footer>
+    <div itemscope itemtype="Http://data-vocabulary.org/Organization" class="footer_div_container">
+        <section>
+            Our contacts:
+            <a itemprop="email" href="mailto:tedasdgsd@gfds.com?subject=Вопрос">mail: tedasdgsd@gfds.com</a>
+            <a itemprop="telephone" href="tel:43462326">telephone: 43462326</a>
+        </section>
+    </div>
+</footer>
+<script>
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1; // Months start at 0!
+    let dd = today.getDate();
+    let h = today.getHours();
+    if (h < 10)
+        h = '0' + h;
+    let min = today.getMinutes();
+    if (min < 10)
+        min = '0' + min;
+    let sec = today.getSeconds();
+    if (sec < 10)
+        sec = '0' + sec;
 
-                if (dd < 10) dd = '0' + dd;
-                if (mm < 10) mm = '0' + mm;
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
 
-                let formattedToday = dd + '/' + mm + '/' + yyyy;
-                let time = h+":"+min+":"+sec;
-                let tz = -(new Date().getTimezoneOffset() / 60);
-                if(tz>0){
-                    tz = "+" + tz;
-                }
-                tz = "UTC" + tz;
-                document.getElementById('date').innerHTML=formattedToday;
-                document.getElementById('time').innerHTML=time;
-                document.getElementById('zone').innerHTML=tz;
-        </script>
-    </body>
+    let formattedToday = dd + '/' + mm + '/' + yyyy;
+    let time = h + ":" + min + ":" + sec;
+    let tz = -(new Date().getTimezoneOffset() / 60);
+    if (tz > 0) {
+        tz = "+" + tz;
+    }
+    tz = "UTC" + tz;
+    document.getElementById('date').innerHTML = formattedToday;
+    document.getElementById('time').innerHTML = time;
+    document.getElementById('zone').innerHTML = tz;
+</script>
+</body>
 </html>

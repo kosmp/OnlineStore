@@ -1,22 +1,47 @@
+{#{% extends "store/base.html" %}#}
+{#{% load static %}#}
+{#{% block content %}#}
+{#<h1>Vacancies</h1>#}
+{#<ul>#}
+{#    {% for vacancy in vacancies %}#}
+{#    <li>#}
+{#        <a href="/vacancy/{{vacancy.pk}}">#}
+{#            <h1>Position: {{ vacancy.position }}</h1>#}
+{#        </a>#}
+{#        <h2>Salary: {{ vacancy.salary }}</h2>#}
+{#        <p>Company name: {{ vacancy.company_name }}</p>#}
+{#        {{ vacancy.experience }} | {{ vacancy.city }}#}
+{#        <br />#}
+{#        <br />#}
+{#    </li>#}
+{#    {% empty %}#}
+{#    <li>No vacancies yet.</li>#}
+{#    {% endfor %}#}
+{#</ul>#}
+{##}
+{#{% endblock %}#}
+
 {% extends "store/base.html" %}
 {% load static %}
-{% block content %}
-<h1>Vacancies</h1>
-<ul>
-    {% for vacancy in vacancies %}
-    <li>
-        <a href="/vacancy/{{vacancy.pk}}">
-            <h1>Position: {{ vacancy.position }}</h1>
-        </a>
-        <h2>Salary: {{ vacancy.salary }}</h2>
-        <p>Company name: {{ vacancy.company_name }}</p>
-        {{ vacancy.experience }} | {{ vacancy.city }}
-        <br />
-        <br />
-    </li>
-    {% empty %}
-    <li>No vacancies yet.</li>
-    {% endfor %}
-</ul>
 
+{% block title %}Vacancies{% endblock %}
+
+{% block head %}
+    <link href="{% static "css/vacancies.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<h2>Vacancy</h2>
+{% for vacancy in vacancies %}
+    <section class="vacancy">
+        <h3 class="vacancy-name">{{ vacancy.position }}</h3>
+        <p class="vacancy-description">{{ vacancy.description }}</p>
+        <p class="vacancy-salary">Salary up to {{ vacancy.salary }}</p>
+        <p>{{ vacancy.experience }}</p>
+        <p>{{ vacancy.city }}</p>
+        <a href="/vacancy/{{vacancy.pk}}">
+            Show more
+        </a>
+    </section>
+{% endfor %}
 {% endblock %}

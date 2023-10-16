@@ -1,0 +1,29 @@
+h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+}
+
+p {
+    margin: 10px;
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-indent: 1em;
+    line-height: 1.5;
+    word-spacing: 2px; /* Интервал между словами */
+    letter-spacing: 1px; /* Интервал между символами */
+    word-break: break-all;
+    font-family: "Times New Roman", serif; /* Настройте свой шрифт */
+    text-align: justify; /* Выравнивание по ширине */
+    position: static; /* Позиционирование */
+}
+
+p::first-letter {
+  color: red;
+  font-size: 22px; 
+}
+
+p::selection {
+  background-color: #ffcc00; /* Цвет фона при выделении */
+  color: #000; /* Цвет текста при выделении */
+  font-family: 'Courier New', Courier, monospace;
+}

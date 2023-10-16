@@ -1,20 +1,19 @@
 {% extends "store/base.html" %}
 {% load static %}
 {% block title %}Articles{% endblock %}
+{% block head %}
+    <link href="{% static "css/news.css" %}" rel="stylesheet">
+{% endblock %}
 {% block content %}
-    <article class="articles_page">
-        <h1>Articles</h1>
-        <ul>
-            {% for article in articles %}
-            <li>
-                <h1>{{ article.title }}</h1><br />
-                <h3>{{ article.summury }}</h3><br />
-                <img src="{{article.image.url}}" alt="article image" style="max-width: 500px;"><br />
-                <a href="/articles/article/{{article.pk}}">Read more</a>
-            </li>
-            {% empty %}
-            <li>No articles yet.</li>
-            {% endfor %}
-        </ul>
-    </article>
-{%  endblock%}
+    <h1>Articles</h1>
+    <section class="news-list">
+        {% for article in articles %}
+            <article>
+                <h1>{{ article.title }}</h1><br/>
+                <p class="short-content">{{ article.summury }}</p><br/>
+                <img src="{{ article.image.url }}" alt="article image" height="250" width="250"><br/>
+                <a href="/articles/article/{{ article.pk }}">Read more</a>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}

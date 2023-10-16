@@ -1,0 +1,39 @@
+.article-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+    gap: 10px; /* Расстояние между ячейками */
+}
+  
+.article-content {
+    grid-column: 2;
+    grid-row: 1; /* Элемент должен занимать вторую строку */
+    align-self: start; 
+}
+
+.article-info {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.article-content::first-letter {
+    color: red; /* Цвет */
+    font-size: 20px; /* Размер */
+}
+
+.article-content::before {
+    content: "Начало статьи: \A";
+    white-space: pre;
+    font-style: italic;
+}
+  
+.article-content::after {
+    content: "\AКонец статьи.";
+    white-space: pre;
+    font-style: italic;
+}
+
+.article-info img {
+    max-width: 400px;
+}
+  

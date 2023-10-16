@@ -1,21 +1,24 @@
 {% extends "store/base.html" %}
 {% load static %}
+
 {% block title %}Contacts{% endblock %}
+
+{% block head %}
+    <link href="{% static "css/contacts.css" %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-<section class="contacts_page">
-    <h1>Our employees</h1>
-    <ul>
-        {% for employee in employees %}
-        <li>
-            <img src="{{employee.photo.url}}" alt="employee image" style="max-width: 200px;"><br />
-            <h3>{{employee.first_name}}</h3>
-            <h3>{{employee.last_name}}</h3>
-            <h3>{{employee.position}}</h3>
-            <h3>{{employee.phone_number}}</h3><br />
-        </li>
-        {% empty %}
-        <li>No employees yet.</li>
-        {% endfor %}
-    </ul>
-</section>
-{%  endblock%}
+<main>
+    <h2>Workers info</h2>
+    <section class="workers-list">
+    {% for employee in employees %}
+        <section class="worker">
+            <img class="worker-img" src = "{{ employee.photo.url }}" width="200" height="200" title="Фото сотрудника">
+            <p>{{ employee.first_name }} {{ employee.last_name }}</p>
+            <p>Position: {{ employee.position }}</p>
+            <p>Phone number: {{ employee.phone_number }}</p>
+        </section>
+    {% endfor %}
+    </section>
+</main>
+{% endblock %}

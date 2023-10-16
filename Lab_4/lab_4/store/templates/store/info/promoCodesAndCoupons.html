@@ -1,193 +1,32 @@
 {% extends "store/base.html" %}
 {% load static %}
-{% block title %}Promocodes{% endblock %}
-{% block content %}
-    <section id="anchor_section">
-        <a href="#valid_p">Valid promocodes</a>
-        <a href="#expired_p">Expired promocodes</a>
-        <a href="#inactive_p">Inactive promocodes</a>
-    </section>
 
-    <article>
-        <h1>Valid Promocodes</h1>
-        <ol id="valid_p">
-            {% for valid in valid_promocodes %}
-                <li>
-                    {{ valid.code }}
-                </li>
-                {% empty %}
-                <li>No promocodes yet.</li>
-            {% endfor %}
-        </ol>
-    </article>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <a href="#anchor_section">To top of page</a>
-    <article>
-        <h1>Expired Promocodes</h1>
-        <ol id="expired_p">
-            {% for expired in expired_promocodes %}
-                <li>
-                    {{ expired.code }}
-                </li>
-                {% empty %}
-                <li>No promocodes yet.</li>
-            {% endfor %}
-        </ol>
-    </article>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <a href="#anchor_section">To top of page</a>
-    <article>
-        <h1>Inactive Promocodes</h1>
-        <ul id="inactive_p">
-            {% for inactive in inactive_promocodes %}
-                <li>
-                    {{ inactive.code }}
-                </li>
-                {% empty %}
-                <li>No promocodes yet.</li>
-            {% endfor %}
-        </ul>
-    </article>
+{% block title %}Coupons{% endblock %}
+
+{% block head %}
+    <link href="{% static "css/coupons.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main>
+    <h2>Coupons</h2>
+    <h3>Active</h3>
+    <ul class="active-list">
+        {% for valid in valid_promocodes %}
+        <li>
+            <p>Code: {{ valid.code }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <hr><h3>Archived</h3>
+    <ul class="deactive-list">
+        {% for expired in expired_promocodes %}
+        <li>
+            <p>Code: {{ expired.code }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+
+</main>
 {% endblock %}

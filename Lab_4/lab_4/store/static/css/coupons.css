@@ -1,0 +1,19 @@
+.active-list li {
+    background-color: #c9f8d8;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.deactive-list li {
+    background-color: #ea2828b6;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.active-list li p, .deactive-list li p {
+    margin: 5px;
+}

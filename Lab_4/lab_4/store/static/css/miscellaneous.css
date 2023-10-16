@@ -1,0 +1,194 @@
+.video-container {
+    background-color: #fff;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    height: 230px;
+}
+
+.video-description {
+    margin: 10px;
+}
+
+.audio {
+    background-color: #fff;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Таблица */
+.table-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+.table {
+    width: 100%;
+    margin: 10px;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Убираем двойные линии между ячейками */
+.table td, .table th {
+    border: 1px solid #ccc;
+}
+
+/* Фон в пустых ячейках */
+.table td:empty {
+    background-color: #d0ff00;
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table td:hover {
+    background-color: #ddd;
+}
+
+.table th:hover {
+    background-color: #aaa;
+}
+
+/* Стиль для первой строки таблицы */
+.table tr:first-child {
+    font-family: 'Courier New', Courier, monospace;
+    color: red;
+}
+
+/* Стиль для последней строки таблицы */
+.table tr:last-child {
+    font-family: 'Courier New', Courier, monospace;
+    color: blue;
+}
+
+.table tr:nth-child(2) {
+    font-family: 'Courier New', Courier, monospace;
+    color: green;
+}
+
+
+.width-indicator, .height-indicator {
+    height: 100px;
+    width: 100px;
+    border: 2px black;
+    border-radius: 10px;
+}
+
+
+/*В РЕЖИМЕ ТЕЛЕФОНА НЕ РАБОТАЕТ ДЛЯ МЕНЬШЕ 1000PX */
+@media(max-width: 1000px) {
+    .width-indicator {
+        background-color: red;
+    }
+}
+
+@media(min-width: 1000px) {
+    .width-indicator {
+        background-color: green;
+    }
+}
+
+
+/*РАБОТАЕТ ПРИ МЕНЬШЕ 600 А НЕ 1000 КАК ДОЛЖНО*/
+@media(max-height: 1000px) {
+    .height-indicator {
+        background-color: red;
+    }
+}
+
+@media(min-height: 1000px) {
+    .height-indicator {
+        background-color: green;
+    }
+}
+
+
+q[lang="fr"]::before {
+    content: "«";
+}
+
+q[lang="fr"]::after {
+    content: "»";
+}
+
+q[lang="en"]::before {
+    content: "\"";
+}
+
+q[lang="en"]::after {
+    content: "\"";
+}
+
+q[lang="ru"]::before {
+    content: "\[";
+}
+
+q[lang="ru"]::after {
+    content: "\]";
+}
+
+.example-list {
+    list-style: "\2611"; 
+}
+
+/* Стиль для первого элемента списка */
+.example-list > li:first-child {
+    background-color: aqua;
+}
+
+/* Стиль для последнего элемента списка */
+.example-list > li:last-child {
+    background-color: bisque;
+}
+
+/* Стиль для каждого второго элемента списка */
+.example-list > li:nth-child(2n) {
+    background-color: #d0ff00;
+}
+
+
+/* Форма */
+.form input:focus {
+    font-weight: bold;
+}
+
+.form input:required {
+    font-family:'Times New Roman', Times, serif;
+}
+
+.form input:disabled {
+    background-color: red;
+}
+
+.form input:invalid {
+    color: red;
+}
+
+.form input:valid {
+    color: green;
+}
+
+.form input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
+    background-color: green;
+}

@@ -1,0 +1,43 @@
+.partner-container {
+    display: block;
+    border-radius: 50%; /* Круг */
+    background-color: #ccc;
+    padding: 20px;
+    margin: 20px;
+    width: 300px;
+    height: 300px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Тень */
+    text-align: center;
+  }
+
+.partner-container p {
+    margin: 10px;
+    margin-top: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: 2px; /* Кернинг */
+}
+
+@keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(1000px);
+    }
+  }
+
+.animated-object {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    animation: slide 3s infinite alternate; /* Анимация */
+}
+
+.position-object {
+    position: static;
+}
